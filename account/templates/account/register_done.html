@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+Witamy
+{% endblock %}
+
+{% block content %}
+<h1>witaj</h1>
+<p>
+    twoje konto zostalo utworzone. morzes sie <a href="{% url 'login' %}">zalogowac</a>
+</p>
+{% endblock %}

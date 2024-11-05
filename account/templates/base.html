@@ -8,7 +8,28 @@
 
 </head>
 <body>
-<header id="header"><span class="logo">Bookmarks</span></header>
+<header id="header"><span class="logo">Bookmarks</span>
+{% if request.user.is_authenticated %}
+    <ul class="menu">
+    <li{% if section == "dashboard" %} class="selected"{% endif %}><a href="{% url 'dashboard' %}">Strona główna</a> </li>
+    <li{% if section == "#" %} class="selected"{% endif %}><a href="#">zdjecia</a> </li>
+     <li{% if section == "#" %} class="selected"{% endif %}><a href="#">ludzie</a> </li>
+    </ul>
+
+    {% endif %}
+<span class="user">
+    {% if user.is_authenticated %}
+    Czesc,{{ request.user.first_name|default:request.user.username }},
+    <form action="{% url "logout" %}" method="post">
+        <button type="submit">Wyloguj</button>
+        {% csrf_token %}
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Zaloguj sie</a>
+
+    {% endif %}
+</span>
+</header>
 <main id="content">
     {% block content %}
     {% endblock %}

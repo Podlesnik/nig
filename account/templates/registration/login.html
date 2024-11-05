@@ -11,10 +11,10 @@
     <p>wypelnilo forma</p>
     {% endif %}
     <div class="login-form">
-    <form action="{%  url 'login' %}" method="post"></form>
+    <form action="{%  url 'login' %}" method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}">
-    <p><input type="submit" value="zaloguj"></p>
+    <p><input type="submit" value="zaloguj"></p></form>
     </div>
 {% endblock %}
